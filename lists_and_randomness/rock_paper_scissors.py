@@ -26,62 +26,27 @@ scissors = '''
       (____)
 ---.__(___)'''
 
-machine_choice = random.choice(['rock', 'paper', 'scissors'])
+choices = [rock, paper, scissors]
+names = ["rock", "paper", "scissors"]
 
 user_choice = input("What do you choose? Type 'Rock', 'Paper' or 'Scissors'.\n").lower()
 
-if user_choice == machine_choice:
-    play_again = input("It's a tie! Play again? Type 'Y' for Yes or 'N' for No.\n")
-    if play_again == 'Y':
-        user_choice = input("What do you choose? Type 'Rock', 'Paper' or 'Scissors'.\n").lower()
-        machine_choice = random.choice(['rock', 'paper', 'scissors'])
-        if user_choice == "rock" and machine_choice == "paper":
-            print(rock,"\n")
-            print(f"machine chose {paper}")
-            print("💥 You Lose! 💥")
-        elif user_choice == "rock" and machine_choice == "scissors":
-            print(rock,"\n")
-            print(f"machine chose {scissors}")
-            print("✨ You Win! ✨")
-        elif user_choice == "paper" and machine_choice == "rock":
-            print(paper,"\n")
-            print(f"machine chose {rock}")
-            print("✨ You Win! ✨")
-        elif user_choice == "paper" and machine_choice == "scissors":
-            print(paper,"\n")
-            print(f"machine chose {scissors}")
-            print("💥 You Lose! 💥")
-        elif user_choice == "scissors" and machine_choice == "rock":
-            print(scissors,"\n")
-            print(f"machine chose {rock}")
-            print("💥 You Lose! 💥")
-        elif user_choice == "scissors" and machine_choice == "paper":
-            print(scissors,"\n")
-            print(f"machine chose {paper}")
-            print("✨ You Win! ✨")
+if user_choice != "rock" and user_choice != "paper" and user_choice != "scissors":
+    print("You can only choose from the given options!")
+else:
+    machine_choice = random.choice(names)
+    user_index = names.index(user_choice)
+    machine_index = names.index(machine_choice)
+
+    print("You chose:")
+    print(choices[user_index])
+    print("\n")
+    print("Machine chose:")
+    print(choices[machine_index])
+
+    if user_index == machine_index:
+        print("It's a tie!")
+    elif (user_index - machine_index) % 3 == 1:
+        print("✨ You Win! ✨")
     else:
-        print("Goodbye!")
-elif user_choice == "rock" and machine_choice == "paper":
-    print(rock,"\n")
-    print(f"machine chose {paper}")
-    print("💥 You Lose! 💥")
-elif user_choice == "rock" and machine_choice == "scissors":
-    print(rock,"\n")
-    print(f"machine chose {scissors}")
-    print("✨ You Win! ✨")
-elif user_choice == "paper" and machine_choice == "rock":
-    print(paper,"\n")
-    print(f"machine chose {rock}")
-    print("✨ You Win! ✨")
-elif user_choice == "paper" and machine_choice == "scissors":
-    print(paper,"\n")
-    print(f"machine chose {scissors}")
-    print("💥 You Lose! 💥")
-elif user_choice == "scissors" and machine_choice == "rock":
-    print(scissors,"\n")
-    print(f"machine chose {rock}")
-    print("💥 You Lose! 💥")
-elif user_choice == "scissors" and machine_choice == "paper":
-    print(scissors,"\n")
-    print(f"machine chose {paper}")
-    print("✨ You Win! ✨")
+        print("💥 You Lose! 💥")
